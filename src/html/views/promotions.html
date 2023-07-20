@@ -7,6 +7,7 @@
 
 		<link rel="icon" type="image/x-icon" href="">
 		<link rel="stylesheet" href="../../css/includes/reset.css">
+		<link rel="stylesheet" href="../../css/includes/footer.css">
 		<link rel="stylesheet" href="../../css/views/promotions.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +93,33 @@
 					<div class="promo-card-grid-container"></div>
 				</div>
 			</section>
+		</div>
+
+		<div id="footer" class="">
+			<h1 id="footer-heading">SHARE YOUR EXPERIENCE</h1>
+			<h3 id="footer-caption">Share your Dusk Experience with @theduskhotel and #DuskMoments</h3>
+			<hr>
+
+			<div id="footer-details">
+				<div id="footer-contact-container" class="footer-section-container">
+					<h2>GENERAL ENQUIRIES</h2>
+					<p><img id="footer-phone-icon" src="../../static/phone_icon.svg">+65 6798 8789</p>
+					<p><img id="footer-phone-icon" src="../../static/mail_icon.svg"><a href="mailto:enquiries@theduskhotel.com">enquiries@theduskhotel.com</a></p>
+				</div>
+				<div class="footer-section-container">
+					<h2>CHECK IN / OUT</h2>
+					<p>Check in from: 10:00</p>
+					<p>Check out before 12:00</p>
+				</div>
+				<div class="footer-section-container">
+					<h2>CONNECT WITH US</h2>
+					<div id="footer-socials-container">
+						<a class="footer-socials-redirect" id="footer-socials-facebook" href="https://facebook.com"></a>
+						<a class="footer-socials-redirect" id="footer-socials-instagram" href="https://instagram.com"></a>
+						<a class="footer-socials-redirect" id="footer-socials-twitter" href="https://twitter.com"></a>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div id="modal-window" class="hidden">
@@ -208,82 +236,88 @@
 			// return true
 			return true
 		}
-		//
+		
+		// master controller
+		const controller = {
+			sectionConainters: [
+				document.getElementById("dining").getElementsByClassName("promo-card-grid-container")[0],
+				document.getElementById("accommodation").getElementsByClassName("promo-card-grid-container")[0],
+				document.getElementById("events").getElementsByClassName("promo-card-grid-container")[0],
+				document.getElementById("wedding").getElementsByClassName("promo-card-grid-container")[0],
+			],
 
-		// set min-date for date input (content-searchbar)
-		document.getElementById("content-searchbar-filter-date").setAttribute("min", new Date().toISOString().split("T")[0])
+			cards: []
+		}
 
-		// promo cards population & registering of clicks
-		var containerElement = [
-			document.getElementById("dining").getElementsByClassName("promo-card-grid-container")[0],
-			document.getElementById("accommodation").getElementsByClassName("promo-card-grid-container")[0],
-			document.getElementById("events").getElementsByClassName("promo-card-grid-container")[0],
-			document.getElementById("wedding").getElementsByClassName("promo-card-grid-container")[0],
-		]
-		for (let i = 0; i < 4; i++) {
-			// category pointer
-			var promos = promotionsDataByCateg[i]
-			var container = containerElement[i]
+		controller.rebuildCards = function(searchParams) {
+			// searchParams: {query: str, category: number?}?
+			// build cards based on search params if no simply list them all
+			// handles all the visual aspects (i.e. updating, order)
+			// promo cards population & registering of clicks
+			for (let i = 0; i < 4; i++) {
+				// category pointer
+				var promos = promotionsDataByCateg[i]
+				var container = containerElement[i]
 
-			for (let j = 0; j < promos.length; j++) {
-				let promocode = promos[j]
-				var promodata = promotionsData[promocode]
+				for (let j = 0; j < promos.length; j++) {
+					let promocode = promos[j]
+					var promodata = promotionsData[promocode]
 
-				// construct new promo card element
-				var bigcontainer = document.createElement("div")
-				bigcontainer.classList.add("promo-card")
+					// construct new promo card element
+					var bigcontainer = document.createElement("div")
+					bigcontainer.classList.add("promo-card")
 
-				var topcontainer = document.createElement("div")
-				topcontainer.classList.add("promo-card-top-container")
-				bigcontainer.appendChild(topcontainer)
+					var topcontainer = document.createElement("div")
+					topcontainer.classList.add("promo-card-top-container")
+					bigcontainer.appendChild(topcontainer)
 
-				var thumbnail = document.createElement("div")
-				thumbnail.classList.add("promo-card-thumbnail")
-				// add background image here for promo card here
-				topcontainer.appendChild(thumbnail)
+					var thumbnail = document.createElement("div")
+					thumbnail.classList.add("promo-card-thumbnail")
+					// add background image here for promo card here
+					topcontainer.appendChild(thumbnail)
 
-				var specscontainer = document.createElement("div")
-				specscontainer.classList.add("promo-card-specs-container")
-				topcontainer.appendChild(specscontainer)
+					var specscontainer = document.createElement("div")
+					specscontainer.classList.add("promo-card-specs-container")
+					topcontainer.appendChild(specscontainer)
 
-				// add specs (date first then any conds they have)
-				var datespec = document.createElement("p")
-				datespec.className = "promo-card-specs-date"
-				datespec.innerHTML = promodata.date
-				specscontainer.appendChild(datespec)
-				for (let k = 0; k < promodata.conds.length; k++) {
-					var spec = document.createElement("p")
-					spec.className = "promo-card-specs-tc"
-					spec.innerHTML = promotionsDataConds[promodata.conds[k]]
-					specscontainer.appendChild(spec)
-				}
-
-				var detailscontainer = document.createElement("div")
-				detailscontainer.classList.add("promo-card-details")
-				bigcontainer.appendChild(detailscontainer)
-
-				var detailsheading = document.createElement("h3")
-				console
-				detailsheading.innerHTML = promodata.name
-				var viewmorebtn = document.createElement("button")
-				viewmorebtn.id = promocode
-				viewmorebtn.classList.add("promo-card-view-more-btn")
-				viewmorebtn.innerHTML = "VIEW MORE"
-
-				detailscontainer.appendChild(detailsheading)
-				detailscontainer.appendChild(viewmorebtn)
-
-				// register click events
-				viewmorebtn.addEventListener("click", e => {
-					e.stopPropagation() // stop bubbling
-
-					if (modal.loadDescription(promocode)) {
-						modal.toggleOpen(true)
+					// add specs (date first then any conds they have)
+					var datespec = document.createElement("p")
+					datespec.className = "promo-card-specs-date"
+					datespec.innerHTML = promodata.date
+					specscontainer.appendChild(datespec)
+					for (let k = 0; k < promodata.conds.length; k++) {
+						var spec = document.createElement("p")
+						spec.className = "promo-card-specs-tc"
+						spec.innerHTML = promotionsDataConds[promodata.conds[k]]
+						specscontainer.appendChild(spec)
 					}
-				})
 
-				// add it to container
-				container.appendChild(bigcontainer)
+					var detailscontainer = document.createElement("div")
+					detailscontainer.classList.add("promo-card-details")
+					bigcontainer.appendChild(detailscontainer)
+
+					var detailsheading = document.createElement("h3")
+					detailsheading.innerHTML = promodata.name
+					var viewmorebtn = document.createElement("button")
+					viewmorebtn.id = promocode
+					viewmorebtn.classList.add("promo-card-view-more-btn")
+					viewmorebtn.innerHTML = "VIEW MORE"
+
+					detailscontainer.appendChild(detailsheading)
+					detailscontainer.appendChild(viewmorebtn)
+
+					// register click events
+					viewmorebtn.addEventListener("click", e => {
+						e.stopPropagation() // stop bubbling
+
+						if (modal.loadDescription(promocode)) {
+							modal.toggleOpen(true)
+						}
+					})
+
+					// add it to container
+					container.appendChild(bigcontainer)
+				}
 			}
 		}
 
@@ -298,6 +332,9 @@
 				}
 			})
 		}
+
+		// set min-date for date input (content-searchbar)
+		document.getElementById("content-searchbar-filter-date").setAttribute("min", new Date().toISOString().split("T")[0])
 
 		// modal close interactors
 		modal.window.addEventListener("click", e => {

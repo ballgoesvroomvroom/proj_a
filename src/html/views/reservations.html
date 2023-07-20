@@ -8,6 +8,7 @@
 		<link rel="icon" type="image/x-icon" href="">
 		<link rel="stylesheet" href="../../css/includes/reset.css">
 		<link rel="stylesheet" href="../../css/includes/topbar.css">
+		<link rel="stylesheet" href="../../css/includes/footer.css">
 		<link rel="stylesheet" href="../../css/views/reservations.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,6 +274,32 @@
 				</div>
 			</div>
 		</div>
+		<div id="footer" class="">
+			<h1 id="footer-heading">SHARE YOUR EXPERIENCE</h1>
+			<h3 id="footer-caption">Share your Dusk Experience with @theduskhotel and #DuskMoments</h3>
+			<hr>
+
+			<div id="footer-details">
+				<div id="footer-contact-container" class="footer-section-container">
+					<h2>GENERAL ENQUIRIES</h2>
+					<p><img id="footer-phone-icon" src="../../static/phone_icon.svg">+65 6798 8789</p>
+					<p><img id="footer-phone-icon" src="../../static/mail_icon.svg"><a href="mailto:enquiries@theduskhotel.com">enquiries@theduskhotel.com</a></p>
+				</div>
+				<div class="footer-section-container">
+					<h2>CHECK IN / OUT</h2>
+					<p>Check in from: 10:00</p>
+					<p>Check out before 12:00</p>
+				</div>
+				<div class="footer-section-container">
+					<h2>CONNECT WITH US</h2>
+					<div id="footer-socials-container">
+						<a class="footer-socials-redirect" id="footer-socials-facebook" href="https://facebook.com"></a>
+						<a class="footer-socials-redirect" id="footer-socials-instagram" href="https://instagram.com"></a>
+						<a class="footer-socials-redirect" id="footer-socials-twitter" href="https://twitter.com"></a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 	<script>
 		// util object
@@ -281,9 +308,9 @@
 			popupMsgContainer: document.getElementById("popup-msg-container")
 		}
 
-		utils.generateTableDates = (year, month) => {
+		utils.generateTableDates = function(year, month) {
 			var tableDates = []
-			var availableDateRange = [-1, -1] // index (referenced from absValue defined in the loop)
+			var availableDateRange = [-1, -1] // index (referenced as absValue defined in the loop)
 
 			var currentMonthFirstDay = new Date(year, month).getDay()
 			var currentMonthTotalDays = new Date(year, month +1, 0).getDate()

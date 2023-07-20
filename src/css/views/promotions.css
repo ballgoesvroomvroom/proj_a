@@ -48,6 +48,9 @@ p {
 
 a {
 	color: var(--primary-compl-color);
+}
+
+input {
 	font-family: 'Times New Roman', serif;
 }
 

@@ -23,7 +23,7 @@ body {
 
 	word-wrap: break-word;
 
-	background-color: var(--secondary-compl-color);
+	background-color: white;
 }
 
 h1 {
@@ -231,7 +231,7 @@ a {
 
 	width: 100%;
 
-	background-color: #fff;
+	background-color: white;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 3px 8px 0px;
 
 	z-index: 4;
@@ -284,7 +284,7 @@ a {
 
 	transform: rotate(45deg);
 
-	background-color: white;
+	background-color: var(--secondary-compl-color);
 }
 
 #line-extensions > div::after {
@@ -294,7 +294,7 @@ a {
 	width: 2px;
 	height: calc(100% + 120px);
 
-	background-color: white;
+	background-color: var(--secondary-compl-color);
 }
 
 /* CARD CONTENT STYLING */
@@ -336,17 +336,21 @@ a {
 	
 	transform: rotate(45deg);
 
-	background-color: white;
+	background-color: var(--secondary-compl-color);
 }
 
 .service-card-connector {
 	width: 2px;
 	height: 140px;
 
-	background-color: white;
+	background-color: var(--secondary-compl-color);
+
+	transition-property: height;
+	transition-duration: 150ms;
+	transition-timing-function: linear;
 }
 
-.service-card-frame:nth-child(2) > .service-card-connector {
+.service-card-frame:hover > .service-card-connector {
 	height: 100px;
 }
 
@@ -362,8 +366,7 @@ a {
 
 	aspect-ratio: .6;
 
-
-	background-color: white;
+	background-color: var(--secondary-compl-color);
 
 	border-style: solid;
 	border-width: 2px;
@@ -450,10 +453,14 @@ a {
 	width: 2px;
 	height: 100px;
 
-	background-color: white;
+	background-color: var(--secondary-compl-color);
+
+	transition-property: height;
+	transition-duration: 150ms;
+	transition-timing-function: linear;
 }
 
-.service-card-frame:nth-child(2) > .service-card-last-connector {
+.service-card-frame:hover > .service-card-last-connector {
 	height: 140px;
 }
 
@@ -466,12 +473,14 @@ a {
 
 	padding: 20px;
 
+	color: white;
+
 	border-style: solid;
 	border-width: 2px;
 	border-color: var(--secondary-color);
 	background-color: var(--primary-compl-color);
 
-	transition-property: color, background-color;
+	transition-property: color, border-color, background-color;
 	transition-duration: 150ms;
 	transition-timing-function: linear;
 }
@@ -479,18 +488,19 @@ a {
 .service-card-menu-download:hover,
 .service-card-menu-download:focus {
 	color: #000;
+	border-color: var(--black-color);
 	background-color: var(--primary-color);
 }
 
 .service-card-menu-download > p {
 	font-size: 12px;
-	color: white;
+	color: inherit;
 }
 
 .service-card-menu-download > h1 {
 	font-size: 34px;
 	font-weight: 500;
-	color: white;
+	color: inherit;
 }
 
 /* SERVICE CARD THUMBNAILS */
