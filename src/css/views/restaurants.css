@@ -489,7 +489,7 @@ a {
 .service-card-menu-download:focus {
 	color: #000;
 	border-color: var(--black-color);
-	background-color: var(--primary-color);
+	background-color: var(--secondary-compl-color);
 }
 
 .service-card-menu-download > p {

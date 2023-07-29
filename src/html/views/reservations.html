@@ -178,7 +178,7 @@
 							<h1>CONTACT</h1>
 						</div>
 						<label for="contact-email-addr">Email address</label>
-						<input name="contact-email-addr" placeholder="Email address" type="text">
+						<input name="contact-email-addr" placeholder="Email address" type="email">
 					</form>
 					<hr>
 					<form class="guest-particulars-form" name="guest-particulars">
@@ -274,7 +274,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer" class="">
+		<div id="footer">
 			<h1 id="footer-heading">SHARE YOUR EXPERIENCE</h1>
 			<h3 id="footer-caption">Share your Dusk Experience with @theduskhotel and #DuskMoments</h3>
 			<hr>
@@ -293,9 +293,15 @@
 				<div class="footer-section-container">
 					<h2>CONNECT WITH US</h2>
 					<div id="footer-socials-container">
-						<a class="footer-socials-redirect" id="footer-socials-facebook" href="https://facebook.com"></a>
-						<a class="footer-socials-redirect" id="footer-socials-instagram" href="https://instagram.com"></a>
-						<a class="footer-socials-redirect" id="footer-socials-twitter" href="https://twitter.com"></a>
+						<div class="footer-socials-hover-grow-container">
+							<a class="footer-socials-redirect" id="footer-socials-facebook" href="https://facebook.com"></a>
+						</div>
+						<div class="footer-socials-hover-grow-container">
+							<a class="footer-socials-redirect" id="footer-socials-instagram" href="https://instagram.com"></a>
+						</div>
+						<div class="footer-socials-hover-grow-container">
+							<a class="footer-socials-redirect" id="footer-socials-twitter" href="https://twitter.com"></a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -563,8 +569,8 @@
 				this.selectedDateThEle = null;
 
 				if (this.selectedTimeEle) {
-					this.selectedTimeEle = null;
 					this.selectedTimeEle.classList.remove("active")
+					this.selectedTimeEle = null;
 				}
 			}
 		}
@@ -980,13 +986,13 @@
 			console.log("register	")
 			paxCountInp.addEventListener("input", e => {
 				var pc = 1; // fall back value
-				if (paxCountInp.length > 0) {
+				if (paxCountInp.value.length > 0) {
 					pc = parseInt(paxCountInp.value)
 				}
 
-				if (pc >= 100) {
+				if (pc > 100) {
 					// over limit
-					this.paxCount = 99; // limit
+					this.paxCount = 100; // limit
 					paxCountIncrBtn.click(); // simulate incremental click to trigger error handling
 				} else {
 					this.paxCount = pc
@@ -1007,9 +1013,14 @@
 			paxCountIncrBtn.addEventListener("click", e => {
 				e.preventDefault(); // prevent default action of the buttons
 
-				if (this.paxCount >= 99) {
+				if (this.paxCount >= 100) {
 					utils.popup(false, "Pax count has exceeded the limit, please contact our custom relations for further assistance")
-					return; // cannot increment anymore
+
+					// force back value
+					paxCountInp.value = 100;
+
+					// return, cannot increment anymore
+					return;
 				} else {
 					paxCountInp.value = ++this.paxCount; // prefix increment
 				}

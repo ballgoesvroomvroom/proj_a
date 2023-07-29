@@ -102,34 +102,42 @@
 	height: 48px;
 }
 
+.footer-socials-hover-grow-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	width: 48px;
+	height: 48px;
+
+	margin-right: 8px;
+}
+
 /* a tag so that when hover, there will be the redirection link at the bottom left */
 /* accessbility even to people with screen readers */
-#footer-socials-container > a {
+.footer-socials-hover-grow-container > a {
 	display: block;
 
 	position: relative;
 
-	width: 42px;
-	height: 42px;
-
-	margin-right: 10px;
-
-	border-radius: 21px;
-	background-color: var(--primary-compl-color);
-
-	transition-property: width, height, margin-right;
-	transition-duration: 150ms;
-	transition-timing-function: linear;
-}
-
-#footer-socials-container > a:focus,
-#footer-socials-container > a:hover {
 	width: 48px;
 	height: 48px;
 
-	margin-right: 4px;
+	transform: scale(.875);
+	transform-origin: 50% 50%;
 
 	border-radius: 24px;
+	background-color: var(--primary-compl-color);
+
+	transition-property: transform;
+	transition-duration: 300ms;
+	transition-timing-function: ease-out;
+}
+
+.footer-socials-hover-grow-container > a:focus,
+.footer-socials-hover-grow-container > a:hover {
+	transform: scale(1);
 }
 
 .footer-socials-redirect::before {
