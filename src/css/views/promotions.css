@@ -200,6 +200,8 @@ input {
 #page-caption {
 	padding: 15px var(--page-horizontal-whitespace);
 	margin-bottom: 20px;
+
+	font-style: italic;
 }
 
 /* CONTENT SEARCH BAR STYLING */
@@ -253,30 +255,13 @@ input {
 	outline-color: var(--secondary-color);
 }
 
-#content-searchbar-filter-date {
-	flex-grow: .025;
-	flex-shrink: 1;
-
-	padding: 10px;
-	margin: 0 10px;
-
-	border-width: 0;
-	border-radius: .2rem;
-	outline: none;
-}
-
-#content-searchbar-filter-date:focus {
-	outline-width: 1px;
-	outline-style: solid;
-	outline-color: var(--secondary-color);
-}
-
 #content-searchbar-filter-category {
 	flex-grow: .025;
 	flex-shrink: 1;
 
 	min-width: 0;
 	padding: 10px;
+	margin: 0 10px;
 
 	border-width: 0;
 	border-radius: .2rem;
@@ -293,7 +278,6 @@ input {
 	flex-grow: .4;
 
 	padding: 10px;
-	margin-left: 10px;
 
 	color: #fff;
 
@@ -410,10 +394,10 @@ input {
 .promo-card-grid-container {
 	display: grid;
 
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(auto-fill, minmax(min-content, 0));
-	column-gap: 20px;
-	row-gap: 20px;
+	column-gap: 120px;
+	row-gap: 40px;
 
 	width: 100%;
 
@@ -426,8 +410,7 @@ input {
 	justify-content: space-between;
 
 	width: calc(100% - 2px);
-	min-height: 0;
-	aspect-ratio: .6;
+	min-height: 300px;
 
 	border-style: solid;
 	border-width: 1px;
@@ -546,6 +529,7 @@ input {
 	justify-content: space-between;
 	align-items: center;
 
+	flex-basis: 250px;
 	flex-grow: 1;
 	flex-shrink: 0;
 
@@ -563,7 +547,7 @@ input {
 }
 
 .promo-card-view-more-btn {
-	padding: 10px;
+	padding: 12px;
 
 	color: #fff;
 	background-color: var(--primary-compl-color);
@@ -572,7 +556,7 @@ input {
 	border-width: 1px;
 	border-color: var(--secondary-color);
 
-	font-size: 13px;
+	font-size: 18px;
 
 	transition-property: color, background-color;
 	transition-duration: 150ms;
@@ -774,14 +758,16 @@ input {
 @media only screen and (min-width: 2000px) {
 	/* increase column row */
 	.promo-card-grid-container {
-		grid-template-columns: repeat(8, 1fr);
+		grid-template-columns: repeat(6, 1fr);
+		column-gap: 240px;
 	}
 }
 
 @media only screen and (max-width: 1200px) {
 	/* decrease column row */
 	.promo-card-grid-container {
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: 60px;
 	}
 }
 
@@ -799,7 +785,8 @@ input {
 
 	/* reduce amount of columns for promotions-card */
 	.promo-card-grid-container {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 50px;
 	}
 
 	/* change modal to a top to bottom layout */
@@ -858,6 +845,8 @@ input {
 	/* change grid container to 2 columns only */
 	.promo-card-grid-container {
 		grid-template-columns: repeat(2, 1fr);
+		column-gap: 20px;
+		row-gap: 20px;
 	}
 }
 

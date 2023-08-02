@@ -41,14 +41,15 @@
 					<label for="promo-content-search">Search by keyword</label>
 					<div id="content-searchbar-input-container">
 						<input id="content-searchbar-input-query" name="promo-content-search" type="text">
-						<input id="content-searchbar-filter-date" name="promo-content-date" type="date">
+						<!-- <input id="content-searchbar-filter-date" name="promo-content-date" type="date"> -->
 						<select id="content-searchbar-filter-category" name="promo-content-category">
+							<option value="all">All</option>
 							<option value="dining">Dining</option>
 							<option value="accommodation">Accommodation</option>
 							<option value="events">Events</option>
 							<option value="wedding">Wedding</option>
 						</select>
-						<button id="content-searchbar-enterbtn" type="submit" disabled>Enter</button>
+						<button id="content-searchbar-enterbtn" type="button">Enter</button>
 					</div>
 				</div>
 			</div>
@@ -258,6 +259,7 @@
 			window: modalWindow,
 			container: document.getElementById("modal-container"),
 
+			thumbnail: document.getElementById("modal-content-thumbnail"),
 			header: document.getElementById("modal-content-header"),
 			description: document.getElementById("modal-content-desciption-p"),
 			date: document.getElementById("modal-content-details-promo-date"),
@@ -286,6 +288,9 @@
 			// load title
 			this.header.innerHTML = data.name
 			this.description.innerHTML = data.description.replaceAll("\n", "<br>")
+
+			// load thumbnail
+			this.thumbnail.style.backgroundImage = `url(${data.thumbnail})`
 
 			// load timing
 			this.date.innerHTML = data.date
@@ -396,8 +401,10 @@
 			// build cards based on search params if no simply list them all
 			// handles all the visual aspects (i.e. updating, order)
 			// promo cards population & registering of clicks
+			// return true upon successful query along with the firstValidSection (-1 if no query applied; to be used as a jumpTo value)
 
 			// rebuild cards
+			var firstValidSection = -1;
 			for (let i = 0; i < 4; i++) {
 				// category pointer
 				var promos = promotionsDataByCateg[i]
@@ -456,6 +463,11 @@
 						var card = this.newCard(container, ignoredActor[j][0])
 						card.classList.add("filtered-out")
 					}
+
+					// determine whether this is the earliest section
+					if (firstValidSection === -1 && searchActor.length > 0) {
+						firstValidSection = i;
+					}
 				} else {
 					for (let j = 0; j < promos.length; j++) {
 						let promocode = promos[j]
@@ -463,6 +475,8 @@
 					}
 				}
 			}
+
+			return [true, firstValidSection];
 		}
 
 		// promo card view more
@@ -477,17 +491,41 @@
 			})
 		}
 
-		// set min-date for date input (content-searchbar)
-		document.getElementById("content-searchbar-filter-date").setAttribute("min", new Date().toISOString().split("T")[0])
-
 		// search function
-		document.getElementById("content-searchbar-input-query").addEventListener("input", e => {
-			var inp = e.target.value;
+		var searchInputField = document.getElementById("content-searchbar-input-query")
+		var searchInputCategField = document.getElementById("content-searchbar-filter-category")
+		var searchEnterBtn = document.getElementById("content-searchbar-enterbtn")
+		searchEnterBtn.addEventListener("click", e => {
+			var inp = searchInputField.value;
 			if (inp.length === 0) {
 				return; // do nothing
 			}
 
-			controller.rebuildCards({query: e.target.value, category: -1});
+			var categ = -1;
+			var categVal = searchInputCategField.value;
+			if (categVal !== "all") {
+				// other categories, form mapping
+				categ = ["dining", "accommodation", "events", "wedding"].indexOf(categVal)
+			}
+
+			var [success, jumpToValue] = controller.rebuildCards({query: inp, category: -1});
+			if (success && (jumpToValue >= 0 || categ >= 0)) {
+				if (categ === -1) {
+					categ = jumpToValue; // overwrite to reference container for scrollTo method
+				} else {
+					// use whatever category was set to
+				}
+
+				var container = controller.sectionContainers[categ];
+				var boundingRect = container.getBoundingClientRect();
+				var height = boundingRect.height;
+				var top = boundingRect.top;
+				console.log(boundingRect)
+				window.scrollTo({
+					top: window.scrollY +top -height,
+					behavior: "smooth"
+				})
+			}
 		})
 
 		// initialise
