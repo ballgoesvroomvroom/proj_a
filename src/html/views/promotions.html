@@ -259,7 +259,10 @@
 
 			header: document.getElementById("modal-content-header"),
 			description: document.getElementById("modal-content-desciption-p"),
-			date: document.getElementById("modal-content-details-promo-date")
+			date: document.getElementById("modal-content-details-promo-date"),
+
+			conditionsElementContainer: document.getElementById("modal-content-details"),
+			conditionsElements: [], // append conditions tags here
 		}
 
 		modal.toggleOpen = function(open) {
@@ -286,6 +289,27 @@
 			// load timing
 			this.date.innerHTML = data.date
 
+			// clear previous conditions
+			for (let i = 0; i < this.conditionsElements.length; i++) {
+				this.conditionsElements[i].remove();
+			}
+
+			// set to empty array
+			this.conditionsElements = [];
+
+			// load in new conditions
+			for (let i = 0; i < data.conds.length; i++) {
+				var spec = document.createElement("p")
+				spec.className = "modal-content-details-promo-tc"
+				spec.innerHTML = promotionsDataConds[data.conds[i]]
+
+				// append to DOM
+				this.conditionsElementContainer.appendChild(spec)
+
+				// add references
+				this.conditionsElements.push(spec)
+			}
+
 			// return true
 			return true
 		}
@@ -302,29 +326,102 @@
 			cards: []
 		}
 
+		controller.newCard = function(container, promocode) {
+			// creates and returns a new card (div) element
+			// with populated details obtained from the promocode
+			var promodata = promotionsData[promocode];
+
+			// construct new promo card element
+			var bigcontainer = document.createElement("div")
+			bigcontainer.classList.add("promo-card")
+
+			var topcontainer = document.createElement("div")
+			topcontainer.classList.add("promo-card-top-container")
+			bigcontainer.appendChild(topcontainer)
+
+			var thumbnail = document.createElement("div")
+			thumbnail.classList.add("promo-card-thumbnail")
+			// add background image here for promo card here
+			topcontainer.appendChild(thumbnail)
+
+			var specscontainer = document.createElement("div")
+			specscontainer.classList.add("promo-card-specs-container")
+			topcontainer.appendChild(specscontainer)
+
+			// add specs (date first then any conds they have)
+			var datespec = document.createElement("p")
+			datespec.className = "promo-card-specs-date"
+			datespec.innerHTML = promodata.date
+			specscontainer.appendChild(datespec)
+			for (let k = 0; k < promodata.conds.length; k++) {
+				var spec = document.createElement("p")
+				spec.className = "promo-card-specs-tc"
+				spec.innerHTML = promotionsDataConds[promodata.conds[k]]
+				specscontainer.appendChild(spec)
+			}
+
+			var detailscontainer = document.createElement("div")
+			detailscontainer.classList.add("promo-card-details")
+			bigcontainer.appendChild(detailscontainer)
+
+			var detailsheading = document.createElement("h3")
+			detailsheading.innerHTML = promodata.name
+			var viewmorebtn = document.createElement("button")
+			viewmorebtn.id = promocode
+			viewmorebtn.classList.add("promo-card-view-more-btn")
+			viewmorebtn.innerHTML = "VIEW MORE"
+
+			detailscontainer.appendChild(detailsheading)
+			detailscontainer.appendChild(viewmorebtn)
+
+			// register click events
+			viewmorebtn.addEventListener("click", e => {
+				e.stopPropagation() // stop bubbling
+
+				if (modal.loadDescription(promocode)) {
+					modal.toggleOpen(true)
+				}
+			})
+
+			// add it to container
+			container.appendChild(bigcontainer)
+
+			// return element
+			return bigcontainer
+		}
+
 		controller.rebuildCards = function(searchParams) {
 			// searchParams: {query: str, category: number?}?
 			// build cards based on search params if no simply list them all
 			// handles all the visual aspects (i.e. updating, order)
 			// promo cards population & registering of clicks
+
+			// rebuild cards
 			for (let i = 0; i < 4; i++) {
 				// category pointer
 				var promos = promotionsDataByCateg[i]
 				var container = this.sectionContainers[i]
 
-				var isValid = true;
+				var isValidSearch = false;
 				if (searchParams && searchParams.category && typeof searchParams.category === "number") {
-					isValid = searchParams.category === -1 || searchParams.category === i; // -1 to search within all categories
+					isValidSearch = searchParams.category === -1 || searchParams.category === i; // -1 to search within all categories
 				}
 
-				var searchActor;
-				if (searchParams && isValid && searchParams.query) {
+				var searchActor, ignoredActor; // ignoredActor for uninterested results
+				if (searchParams && isValidSearch && searchParams.query) {
 					var searchQuery = searchParams.query.toLowerCase()
 					searchActor = promos.map(promoCode => [promoCode, promotionsData[promoCode].name.toLowerCase()])
+					ignoredActor = [];
 
 					searchActor = searchActor.filter(pack => {
-						console.log(pack[1], searchQuery, pack[1].includes(searchQuery))
-						return pack[1].includes(searchQuery) // only perform sorting on interested elements
+						var interested = pack[1].includes(searchQuery); // only perform sorting on interested elements
+						if (interested) {
+							return true
+						} else {
+							// add it to uninterested list
+							ignoredActor.push(pack)
+							return false
+						}
 					}).sort((a, b) => {
 						console.log(a[1])
 						var i = a[1].indexOf(searchQuery)
@@ -342,69 +439,27 @@
 					})
 				}
 
-				if (isValid) {
+				if (isValidSearch) {
 					// there is query present
-					
-				}
 
-				for (let j = 0; j < promos.length; j++) {
-					let promocode = promos[j]
-					var promodata = promotionsData[promocode]
+					// clear cards first
+					container.innerHTML = "";
 
-					// construct new promo card element
-					var bigcontainer = document.createElement("div")
-					bigcontainer.classList.add("promo-card")
-
-					var topcontainer = document.createElement("div")
-					topcontainer.classList.add("promo-card-top-container")
-					bigcontainer.appendChild(topcontainer)
-
-					var thumbnail = document.createElement("div")
-					thumbnail.classList.add("promo-card-thumbnail")
-					// add background image here for promo card here
-					topcontainer.appendChild(thumbnail)
-
-					var specscontainer = document.createElement("div")
-					specscontainer.classList.add("promo-card-specs-container")
-					topcontainer.appendChild(specscontainer)
-
-					// add specs (date first then any conds they have)
-					var datespec = document.createElement("p")
-					datespec.className = "promo-card-specs-date"
-					datespec.innerHTML = promodata.date
-					specscontainer.appendChild(datespec)
-					for (let k = 0; k < promodata.conds.length; k++) {
-						var spec = document.createElement("p")
-						spec.className = "promo-card-specs-tc"
-						spec.innerHTML = promotionsDataConds[promodata.conds[k]]
-						specscontainer.appendChild(spec)
+					// first build the search results first
+					for (let j = 0; j < searchActor.length; j++) {
+						this.newCard(container, searchActor[j][0]); // index 0 for the promocode, index 1 for the name field
 					}
 
-					var detailscontainer = document.createElement("div")
-					detailscontainer.classList.add("promo-card-details")
-					bigcontainer.appendChild(detailscontainer)
-
-					var detailsheading = document.createElement("h3")
-					detailsheading.innerHTML = promodata.name
-					var viewmorebtn = document.createElement("button")
-					viewmorebtn.id = promocode
-					viewmorebtn.classList.add("promo-card-view-more-btn")
-					viewmorebtn.innerHTML = "VIEW MORE"
-
-					detailscontainer.appendChild(detailsheading)
-					detailscontainer.appendChild(viewmorebtn)
-
-					// register click events
-					viewmorebtn.addEventListener("click", e => {
-						e.stopPropagation() // stop bubbling
-
-						if (modal.loadDescription(promocode)) {
-							modal.toggleOpen(true)
-						}
-					})
-
-					// add it to container
-					container.appendChild(bigcontainer)
+					// build the uninterested ones
+					for (let j = 0; j < ignoredActor.length; j++) {
+						var card = this.newCard(container, ignoredActor[j][0])
+						card.classList.add("filtered-out")
+					}
+				} else {
+					for (let j = 0; j < promos.length; j++) {
+						let promocode = promos[j]
+						this.newCard(container, promocode)
+					}
 				}
 			}
 		}
@@ -426,8 +481,16 @@
 
 		// search function
 		document.getElementById("content-searchbar-input-query").addEventListener("input", e => {
-			controller.rebuildCards({query: e.target.value});
+			var inp = e.target.value;
+			if (inp.length === 0) {
+				return; // do nothing
+			}
+
+			controller.rebuildCards({query: e.target.value, category: -1});
 		})
+
+		// initialise
+		controller.rebuildCards();
 
 		// modal close interactors
 		modal.window.addEventListener("click", e => {

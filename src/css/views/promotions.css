@@ -439,6 +439,10 @@ input {
 	overflow-y: hidden;
 }
 
+.promo-card.filtered-out {
+	filter: saturate(0);
+}
+
 .promo-card-top-container {
 	position: relative;
 	flex-grow: 1;
@@ -700,7 +704,7 @@ input {
 	min-width: 0;
 }
 
-#modal-content-details-promo-date {
+#modal-content-details > p {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -710,7 +714,7 @@ input {
 	word-break: break-all;	
 }
 
-#modal-content-details-promo-date::before {
+#modal-content-details > p::before {
 	display: block;
 	content: "";
 
@@ -725,6 +729,10 @@ input {
 	background-image: url("../../static/date_icon.svg");
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+#modal-content-details > .modal-content-details-promo-tc::before {
+	background-image: url("../../static/exclamation_icon.svg");
 }
 
 #modal-content-close-btn {
