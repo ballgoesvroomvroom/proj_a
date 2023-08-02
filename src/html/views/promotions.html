@@ -172,6 +172,7 @@
 				name: "20% Off 2nd Pax for High Tea",
 				description: "2nd pax dine at a discounted price of 65.90+ (<i>U.P. 82.75+</i>)\nLimited to only one 2nd pax for a table",
 				date: "14/05/23 - 21/05/23",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"WSL", "MEO", "TCA"
 				]
@@ -180,6 +181,7 @@
 				name: "10% Off Suites w/ UOB Card",
 				description: "10% off for suites rooms when you pay with UOB card",
 				date: "01/01/23 - 01/06/23",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"LTSS", "TCA"
 				]
@@ -188,22 +190,16 @@
 				name: "10% Off Rooms on Your Birthday Month",
 				description: "10% off for one classic rooms on your birthday month.\nLimited to a maximum of 5 nights stay.",
 				date: "01/01/2023 - 31/12/2024",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"MEO", "TCA"
-				]
-			},
-			"TESTER": {
-				name: "Te",
-				description: "TEST",
-				date: "definite",
-				conds: [
-					"MEO"
 				]
 			},
 			"FDROOM": {
 				name: "8% Off Rooms This Father's Day",
 				description: "8% off your final receipt price for any room bookings of your choice.",
 				date: "01/07/2023 - 31/07/2023",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"TCA"
 				]
@@ -212,6 +208,7 @@
 				name: "5% Off Food This Father's Day",
 				description: "8% off your final receipt price for any dine-ins of your choice.",
 				date: "01/07/2023 - 31/07/2023",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"TCA"
 				]
@@ -220,6 +217,7 @@
 				name: "Free Goodie Bag This Father's Day",
 				description: "Get a free goodie bags worth up to SGD50++ of treats upon completion of any dining reservations.\nClaimable for every male pax who comes in with a child.",
 				date: "01/07/2023 - 18/07/2023",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"TCA", "WSL", "MEO"
 				]
@@ -227,6 +225,7 @@
 			"AMEX10OFF": {
 				name: "10% Off Bill",
 				description: "10% off meetings and venues reservation fees when you complete the transaction with a corporate AMEX card.",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"TCA"
 				]
@@ -235,6 +234,7 @@
 				name: "5% Off Virtual Conference",
 				description: "First time clients hosting a semi-large virtual meeting will be granted a 5% discount as a small token of appreciation.\nMeeting attendees must exceed 50 guests.",
 				date: "01/08/2023 - 01/08/2024",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"TCA", "MEO"
 				]
@@ -243,6 +243,7 @@
 				name: "Free Gift Hamper",
 				description: "A free hamper consisting of SGD300++ worth of gifts will be gifted to members who hold weddings here.\nSimply obtain the membership details during booking.",
 				date: "01/08/2023 - 01/08/2024",
+				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
 				conds: [
 					"TCA", "MEO"
 				]
@@ -341,7 +342,7 @@
 
 			var thumbnail = document.createElement("div")
 			thumbnail.classList.add("promo-card-thumbnail")
-			// add background image here for promo card here
+			thumbnail.style.backgroundImage = `url(${promodata.thumbnail})`
 			topcontainer.appendChild(thumbnail)
 
 			var specscontainer = document.createElement("div")

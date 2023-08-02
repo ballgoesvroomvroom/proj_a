@@ -605,6 +605,16 @@ input {
 	background-image: url("https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?cs=srgb&dl=pexels-pixabay-164595.jpg&fm=jpg");
 }
 
+/* EVENTS CONTENT STYLING */
+#events > .section-header-container {
+	background-image: url("https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?cs=srgb&dl=pexels-pixabay-164595.jpg&fm=jpg");
+}
+
+/* WEDDING CONTENT STYLING */
+#wedding > .section-header-container {
+	background-image: url("https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?cs=srgb&dl=pexels-pixabay-164595.jpg&fm=jpg");
+}
+
 
 /* MODAL STYLING */
 #modal-window {
@@ -658,7 +668,6 @@ input {
 
 	border-radius: .2rem 0 0 .2rem;
 
-	background-image: url("https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 50%;
