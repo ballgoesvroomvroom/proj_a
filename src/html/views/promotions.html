@@ -156,10 +156,10 @@
 	<script>
 		// promotions entry
 		const promotionsDataByCateg = [
-			["2023HT2NDP20OFF"], // DINING
-			["UOB10OFF", "BM10OFF"], // ACCOMMODATION
-			["TESTER"], // EVENTS
-			[] // WEDDING
+			["2023HT2NDP20OFF", "FDFOOD", "FDTREATS"], // DINING
+			["UOB10OFF", "BM10OFF", "FDROOM"], // ACCOMMODATION
+			["AMEX10OFF", "FIRSTMICE"], // EVENTS
+			["XIJIU"] // WEDDING
 		]
 		const promotionsDataConds = {
 			"WSL": "While stocks last",
@@ -198,6 +198,53 @@
 				date: "definite",
 				conds: [
 					"MEO"
+				]
+			},
+			"FDROOM": {
+				name: "8% Off Rooms This Father's Day",
+				description: "8% off your final receipt price for any room bookings of your choice.",
+				date: "01/07/2023 - 31/07/2023",
+				conds: [
+					"TCA"
+				]
+			},
+			"FDFOOD": {
+				name: "5% Off Food This Father's Day",
+				description: "8% off your final receipt price for any dine-ins of your choice.",
+				date: "01/07/2023 - 31/07/2023",
+				conds: [
+					"TCA"
+				]
+			},
+			"FDTREATS": {
+				name: "Free Goodie Bag This Father's Day",
+				description: "Get a free goodie bags worth up to SGD50++ of treats upon completion of any dining reservations.\nClaimable for every male pax who comes in with a child.",
+				date: "01/07/2023 - 18/07/2023",
+				conds: [
+					"TCA", "WSL", "MEO"
+				]
+			},
+			"AMEX10OFF": {
+				name: "10% Off Bill",
+				description: "10% off meetings and venues reservation fees when you complete the transaction with a corporate AMEX card.",
+				conds: [
+					"TCA"
+				]
+			},
+			"FIRSTMICE": {
+				name: "5% Off Virtual Conference",
+				description: "First time clients hosting a semi-large virtual meeting will be granted a 5% discount as a small token of appreciation.\nMeeting attendees must exceed 50 guests.",
+				date: "01/08/2023 - 01/08/2024",
+				conds: [
+					"TCA", "MEO"
+				]
+			},
+			"XIJIU": {
+				name: "Free Gift Hamper",
+				description: "A free hamper consisting of SGD300++ worth of gifts will be gifted to members who hold weddings here.\nSimply obtain the membership details during booking.",
+				date: "01/08/2023 - 01/08/2024",
+				conds: [
+					"TCA", "MEO"
 				]
 			}
 		}
@@ -245,7 +292,7 @@
 		
 		// master controller
 		const controller = {
-			sectionConainters: [
+			sectionContainers: [
 				document.getElementById("dining").getElementsByClassName("promo-card-grid-container")[0],
 				document.getElementById("accommodation").getElementsByClassName("promo-card-grid-container")[0],
 				document.getElementById("events").getElementsByClassName("promo-card-grid-container")[0],
@@ -263,7 +310,42 @@
 			for (let i = 0; i < 4; i++) {
 				// category pointer
 				var promos = promotionsDataByCateg[i]
-				var container = containerElement[i]
+				var container = this.sectionContainers[i]
+
+				var isValid = true;
+				if (searchParams && searchParams.category && typeof searchParams.category === "number") {
+					isValid = searchParams.category === -1 || searchParams.category === i; // -1 to search within all categories
+				}
+
+				var searchActor;
+				if (searchParams && isValid && searchParams.query) {
+					var searchQuery = searchParams.query.toLowerCase()
+					searchActor = promos.map(promoCode => [promoCode, promotionsData[promoCode].name.toLowerCase()])
+
+					searchActor = searchActor.filter(pack => {
+						console.log(pack[1], searchQuery, pack[1].includes(searchQuery))
+						return pack[1].includes(searchQuery) // only perform sorting on interested elements
+					}).sort((a, b) => {
+						console.log(a[1])
+						var i = a[1].indexOf(searchQuery)
+						var j = b[1].indexOf(searchQuery)
+						if (i > j) {
+							// j comes before i
+							return 1
+						} else if (i < j) {
+							// j comes after i
+							return -1
+						} else {
+							// same position, maintain RELATIVE positions
+							return 0
+						}
+					})
+				}
+
+				if (isValid) {
+					// there is query present
+					
+				}
 
 				for (let j = 0; j < promos.length; j++) {
 					let promocode = promos[j]
@@ -341,6 +423,11 @@
 
 		// set min-date for date input (content-searchbar)
 		document.getElementById("content-searchbar-filter-date").setAttribute("min", new Date().toISOString().split("T")[0])
+
+		// search function
+		document.getElementById("content-searchbar-input-query").addEventListener("input", e => {
+			controller.rebuildCards({query: e.target.value});
+		})
 
 		// modal close interactors
 		modal.window.addEventListener("click", e => {

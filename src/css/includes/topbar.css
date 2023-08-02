@@ -75,25 +75,6 @@
 	background-color: #fff;
 }
 
-#topbar-booknow-btn {
-	padding: 10px;
-
-	color: #fff;
-
-	background-color: var(--primary-compl-color);
-
-	transition-property: color, background-color;
-	transition-duration: 150ms;
-	transition-timing-function: linear;
-}
-
-#topbar-booknow-btn:hover,
-#topbar-booknow-btn:focus {
-	color: #000;
-	background-color: var(--primary-color);
-}
-
-
 /* MEDIA QUERIES */
 @media only screen and (max-width: 900px) {
 	:root {
