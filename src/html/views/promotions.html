@@ -13,8 +13,6 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 		<title>Dusk | Promotions</title>
 	</head>
 	<body>
@@ -25,7 +23,7 @@
 					<img src="../../static/account_icon.svg">
 					Member sign in
 				</button>
-				<button id="topbar-booknow-btn">
+				<button id="topbar-booknow-btn" class="global-site-btn">
 					BOOK NOW
 				</button>
 			</div>
@@ -63,7 +61,7 @@
 					<h2>Dining</h2>
 				</div>
 				<div class="section-content-container">
-					<p>Have a go at our finely-curated asian culinary dishes.</p>
+					<p>Have a go at our finely-curated asian culinary dishes</p>
 					<div class="promo-card-grid-container"></div>
 				</div>
 			</section>
@@ -72,7 +70,7 @@
 					<h2>Accommodation</h2>
 				</div>
 				<div class="section-content-container">
-					<p>Cozy yet luxurious room stays.</p>
+					<p>Cozy yet luxurious room stays</p>
 					<div class="promo-card-grid-container"></div>
 				</div>
 			</section>
@@ -81,7 +79,7 @@
 					<h2>Events</h2>
 				</div>
 				<div class="section-content-container">
-					<p>Cozy yet luxurious room stays.</p>
+					<p>Dont' miss out on our exclusive event promotions</p>
 					<div class="promo-card-grid-container"></div>
 				</div>
 			</section>
@@ -90,7 +88,7 @@
 					<h2>Wedding</h2>
 				</div>
 				<div class="section-content-container">
-					<p>Cozy yet luxurious room stays.</p>
+					<p>Cherish your special day with our wedding promotions</p>
 					<div class="promo-card-grid-container"></div>
 				</div>
 			</section>
@@ -159,8 +157,8 @@
 		const promotionsDataByCateg = [
 			["2023HT2NDP20OFF", "FDFOOD", "FDTREATS"], // DINING
 			["UOB10OFF", "BM10OFF", "FDROOM"], // ACCOMMODATION
-			["AMEX10OFF", "FIRSTMICE"], // EVENTS
-			["XIJIU"] // WEDDING
+			["AMEX10OFF", "FIRSTMICE", "PBSALE"], // EVENTS
+			["XIJIU", "HNMPCK", "PWDPCK"] // WEDDING
 		]
 		const promotionsDataConds = {
 			"WSL": "While stocks last",
@@ -182,7 +180,7 @@
 				name: "10% Off Suites w/ UOB Card",
 				description: "10% off for suites rooms when you pay with UOB card",
 				date: "01/01/23 - 01/06/23",
-				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
+				thumbnail: "../../static/promos/uob.png",
 				conds: [
 					"LTSS", "TCA"
 				]
@@ -191,7 +189,7 @@
 				name: "10% Off Rooms on Your Birthday Month",
 				description: "10% off for one classic rooms on your birthday month.\nLimited to a maximum of 5 nights stay.",
 				date: "01/01/2023 - 31/12/2024",
-				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
+				thumbnail: "../../static/promos/birthday.png",
 				conds: [
 					"MEO", "TCA"
 				]
@@ -206,10 +204,10 @@
 				]
 			},
 			"FDFOOD": {
-				name: "5% Off Food This Father's Day",
+				name: "8% Off Dining This Father's Day",
 				description: "8% off your final receipt price for any dine-ins of your choice.",
 				date: "01/07/2023 - 31/07/2023",
-				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
+				thumbnail: "../../static/promos/fathersday.png",
 				conds: [
 					"TCA"
 				]
@@ -218,7 +216,7 @@
 				name: "Free Goodie Bag This Father's Day",
 				description: "Get a free goodie bags worth up to SGD50++ of treats upon completion of any dining reservations.\nClaimable for every male pax who comes in with a child.",
 				date: "01/07/2023 - 18/07/2023",
-				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
+				thumbnail: "../../static/promos/goodiefatherday.png",
 				conds: [
 					"TCA", "WSL", "MEO"
 				]
@@ -244,9 +242,36 @@
 				name: "Free Gift Hamper",
 				description: "A free hamper consisting of SGD300++ worth of gifts will be gifted to members who hold weddings here.\nSimply obtain the membership details during booking.",
 				date: "01/08/2023 - 01/08/2024",
-				thumbnail: "https://www.panpacific.com/content/dam/pphg-revamp/en/global/countries/singapore/teacation-relaxation/tea-cation-prsmb.jpg",
+				thumbnail: "../../static/promos/gifthamper.png",
 				conds: [
 					"TCA", "MEO"
+				]
+			},
+			"HNMPCK": {
+				name: "Honeymoon Package",
+				description: "Sign up for this elusive package for an additional SGD2,989 for a fully planned out honeymoon to the Bahamas beach.",
+				date: "01/08/2023 - 01/08/2024",
+				thumbnail: "https://villabukitpancawati.com/wp-content/uploads/2017/12/DSC_2323.jpg",
+				conds: [
+					"TCA", "WSL"
+				]
+			},
+			"PWDPCK": {
+				name: "Pre-wedding Party",
+				description: "Add on a pre-wedding party for an additional SGD60 per pax.",
+				date: "01/08/2023 - 01/08/2024",
+				thumbnail: "https://weddingknowhow.com/wp-content/uploads/2020/03/pre-wedding-parties.jpg",
+				conds: [
+					"TCA"
+				]
+			},
+			"PBSALE": {
+				name: "Early Booking Promotion",
+				description: "Complete your booking transaction before the first quarter of the month to enjoy a 5% discount.",
+				date: "01/08/2023 - 08/08/2023",
+				thumbnail: "https://blog.amazing-mexico.com/wp-content/uploads/2018/03/Book-Early-1.jpg",
+				conds: [
+					"TCA"
 				]
 			}
 		}

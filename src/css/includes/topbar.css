@@ -14,6 +14,7 @@
 
 /* TOPBAR STYLING */
 #topbar-container {
+	box-sizing: content-box; /* to override asterisk styling in external stylesheets */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -38,6 +39,7 @@
 }
 
 #comp-logo {
+	box-sizing: content-box; /* to override asterisk styling in external stylesheets */
 	width: auto;
 	height: 100%;
 
@@ -45,11 +47,13 @@
 }
 
 #topbar-right-container {
+	box-sizing: content-box; /* to override asterisk styling in external stylesheets */
 	display: flex;
 	flex-direction: row;
 }
 
 #topbar-member-login-btn {
+	box-sizing: content-box; /* to override asterisk styling in external stylesheets */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -64,6 +68,7 @@
 }
 
 #topbar-member-login-btn > img {
+	box-sizing: content-box; /* to override asterisk styling in external stylesheets */
 	width: 24px;
 	height: 24px;
 	padding: 8px;

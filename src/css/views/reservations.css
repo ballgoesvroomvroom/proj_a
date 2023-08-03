@@ -76,6 +76,10 @@ input:invalid {
 	display: none;
 }
 
+.required-field-label {
+	color: red;
+}
+
 /* POPUP MESSAGE CONTAINER */
 #popup-container {
 	display: flex;
@@ -334,6 +338,12 @@ input:invalid {
 .page-header-next-navigbtn:focus,
 .page-header-next-navigbtn:hover {
 	background-color: var(--secondary-color);
+}
+
+.bottom-page-next-btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 /* DETAILS FORM CONTAINER */

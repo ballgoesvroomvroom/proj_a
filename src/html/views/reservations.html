@@ -9,14 +9,13 @@
 		<link rel="stylesheet" href="../../css/includes/reset.css">
 		<link rel="stylesheet" href="../../css/includes/topbar.css">
 		<link rel="stylesheet" href="../../css/includes/footer.css">
+		<link rel="stylesheet" href="../../css/includes/tags.css">
 		<link rel="stylesheet" href="../../css/views/reservations.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-		<title>Dusk | Promotions</title>
+		<title>Dusk | Reservations</title>
 	</head>
 	<body>
 		<div id="popup-container">
@@ -29,7 +28,7 @@
 					<img src="../../static/account_icon.svg">
 					Member sign in
 				</button>
-				<button id="topbar-booknow-btn" type="button">
+				<button id="topbar-booknow-btn" class="global-site-btn" type="button">
 					BOOK NOW
 				</button>
 			</div>
@@ -165,6 +164,9 @@
 						</div>
 					</div>
 				</div>
+				<div class="bottom-page-next-btn-container">
+					<button class="page-header-next-navigbtn" type="button">Next</button>
+				</div>
 			</div>
 			<div id="guests-page-container" class="page-container">
 				<div class="page-header-container">
@@ -177,7 +179,7 @@
 						<div id="contact-particulars-form-header">
 							<h1>CONTACT</h1>
 						</div>
-						<label for="contact-email-addr">Email address</label>
+						<label for="contact-email-addr">Email address<span class="required-field-label">*</span></label>
 						<input name="contact-email-addr" placeholder="Email address" type="email">
 					</form>
 					<hr>
@@ -188,11 +190,11 @@
 						</div>
 						<div class="guest-particulars-name-container">
 							<div>
-								<label for="guest-firstname">First name</label>
+								<label for="guest-firstname">First name<span class="required-field-label">*</span></label>
 								<input name="guest-firstname" placeholder="First name" type="text" pattern="[a-zA-Z\s\/]{3,255}" maxlength="255">
 							</div>
 							<div>
-								<label for="guest-lastname">Last name</label>
+								<label for="guest-lastname">Last name<span class="required-field-label">*</span></label>
 								<input name="guest-lastname" placeholder="Last name" type="text" pattern="[a-zA-Z\s\/]{3,255}" maxlength="255">
 							</div>
 						</div>
@@ -207,6 +209,9 @@
 							<button class="guest-count-ticker-btn" id="guest-count-incremental-btn" type="button">+</button>
 						</div>
 					</form>
+				</div>
+				<div class="bottom-page-next-btn-container">
+					<button class="page-header-next-navigbtn" type="button">Next</button>
 				</div>
 			</div>
 			<div id="payment-page-container" class="page-container">
@@ -1228,10 +1233,10 @@
 
 			// validate guest
 			if (firstname.length === 0) {
-				utils.popup(false, "First name details is required");
+				utils.popup(false, "First name detail is required");
 				return [false]
 			} else if (lastname.length === 0) {
-				utils.popup(false, "Last name details is required")
+				utils.popup(false, "Last name detail is required")
 				return [false]
 			}
 

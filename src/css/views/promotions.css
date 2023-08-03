@@ -390,6 +390,10 @@ input {
 	padding: 10px var(--page-horizontal-whitespace);
 }
 
+.section-content-container > p {
+	
+}
+
 /* PROMO CARDS */
 .promo-card-grid-container {
 	display: grid;
@@ -763,7 +767,7 @@ input {
 	}
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1600px) {
 	/* decrease column row */
 	.promo-card-grid-container {
 		grid-template-columns: repeat(3, 1fr);
@@ -771,7 +775,7 @@ input {
 	}
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
 	:root {
 		--page-horizontal-whitespace: 40px;
 	}
