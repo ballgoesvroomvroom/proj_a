@@ -5,27 +5,74 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10.0, minimum-scale=1, user-scalable=yes"/>
 		<meta name="description" content=":)"/>
 
-		<link rel="icon" type="image/x-icon" href="">
+		<link rel="icon" type="image/x-icon" href="../../static/favicon.ico">
 		<link rel="stylesheet" href="../../css/includes/reset.css">
+		<link rel="stylesheet" href="../../css/includes/topbar.css">
 		<link rel="stylesheet" href="../../css/includes/footer.css">
+		<link rel="stylesheet" href="../../css/includes/tags.css">
 		<link rel="stylesheet" href="../../css/views/restaurants.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-		<title>Dusk | Restaurants</title>
+		<title>The Dusk Hotel | Restaurants</title>
 	</head>
 	<body>
 		<div id="topbar-container">
 			<img id="comp-logo" src="../../static/icon.svg">
 			<div id="topbar-right-container">
-				<button id="topbar-member-login-btn">
+				<button id="topbar-member-login-btn" type="button">
 					<img src="../../static/account_icon.svg">
 					Member sign in
 				</button>
-				<button id="topbar-booknow-btn" class="global-site-btn">
+				<a id="topbar-booknow-btn" class="global-site-btn" href="./room_booking.html">
 					BOOK NOW
+				</a>
+				<button id="menu-btn" onclick="document.getElementById('topbar-container').classList.toggle('navopen');">
+					<div class="btn-line"></div>
+					<div class="btn-line"></div>
+					<div class="btn-line"></div>
 				</button>
+			</div>
+			<div id="navigation-outer-darken"></div>
+			<div id="navigation-container">
+				<div class="navigation-section-container" onclick="this.classList.toggle('active')">
+					<button type="button">ROOMS</button>
+					<div class="navigation-section-element">
+						<a href="./room_landing_page.html">ROOMS</a>
+						<a href="./suite_landing_page.html">SUITES</a>
+					</div>
+				</div>
+				<div class="navigation-section-container" onclick="this.classList.toggle('active')">
+					<button type="button">DINING</button>
+					<div class="navigation-section-element">
+						<a href="./restaurants.html">DAWN</a>
+						<a href="./reservations.html">RESERVATIONS</a>
+					</div>
+				</div>
+				<div class="navigation-section-container" onclick="this.classList.toggle('active')">
+					<button type="button">EVENTS</button>
+					<div class="navigation-section-element">
+						<a href="./event_venue.html">VENUE</a>
+						<a href="./event_wedding.html">WEDDING</a>
+						<a href="./event_corporate.html">CORPORATE</a>
+						<a href="./event_inquiry.html">INQUIRY</a>
+					</div>
+				</div>
+				<div class="navigation-section-container" onclick="this.classList.toggle('active')">
+					<button type="button">FACILITIES</button>
+					<div class="navigation-section-element">
+						<a href="./facilities.html">FACILITIES</a>
+						<a href="./facilities_booking.html">BOOKING</a>
+					</div>
+				</div>
+				<div class="navigation-section-container" onclick="this.classList.toggle('active')">
+					<button type="button">OTHERS</button>
+					<div class="navigation-section-element">
+						<a href="./promotions.html">PROMOTIONS</a>
+						<a href="./contact_us.html">CONTACT</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="frontpage-container">
@@ -141,35 +188,6 @@
 				</div>
 			</div>
 		</div>
-
-
-<!-- 		<div id="ws"></div>
-		<div id="footer">
-			<p class="title2">SHARE YOUR EXPERIENCE</p><br>
-			<p class="title3"><i>Share Your Dusk Experience with @theduskhotel and #DuskMoments</i></p><hr class="hrstyle">
-			<br><br>
-			<div id="split">
-				<div class="experience1">
-					<p class="social">GENERAL ENQUIRIES</p>
-					<p class="bottomalign"><i style='font-size:18px' class='fa'>&#xf095;</i> +65 6798 8789
-					<br><br>
-					<a href="mailto:enquiries@theduskhotel.com"><i style='font-size:18px' class='fa'>&#xf0e0;</i> enquiries@theduskhotel.com</a></p>
-				</div>
-
-				<div class="experience">
-					<p class="social">CHECK IN / OUT</p>
-					<p class="bottomalign">Check in from: 10:00<br>
-					Check out before: 12:00</p>
-				</div>
-				<div class="experience">
-					<p class="social">CONNECT WITH US</p>
-					<p><a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-						<a href="https://twitter.com/?lang=en-sg" class="fa fa-twitter"></a>
-						<a href="https://www.instagram.com" class="fa fa-instagram"></a>
-					</p>
-				</div>
-			</div>
-		</div> -->
 		<!-- CREDITS
 			https://svgsilh.com/image/37726.html
 		-->

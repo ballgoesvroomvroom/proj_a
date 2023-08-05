@@ -48,6 +48,7 @@
 }
 
 #footer-details {
+	box-sizing: content-box; /* to override inline stylings */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;

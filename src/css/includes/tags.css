@@ -2,10 +2,16 @@
 
 /* interactive buttons */
 .global-site-btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
 	padding: 10px;
 
-	color: #fff;
+	text-decoration: none;
 
+	color: #fff;
 	background-color: var(--primary-compl-color);
 
 	border-style: solid;
