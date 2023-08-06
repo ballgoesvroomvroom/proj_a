@@ -38,6 +38,11 @@
 	z-index: 10;
 }
 
+#comp-logo-a-wrapper {
+	width: auto;
+	height: 100%;
+}
+
 #comp-logo {
 	box-sizing: content-box; /* to override asterisk styling in external stylesheets */
 	width: auto;

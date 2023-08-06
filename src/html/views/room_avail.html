@@ -133,7 +133,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-compl-color);
   margin: 30px;
 }
 
@@ -181,13 +181,13 @@ body {
 #availability .room-information  .price-ratings {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 24px;
+  margin-top: -5px;
 }
 
 #availability .room-information  .price-ratings .price span {
   font-size: 32px;
   font-weight: 700;
-  line-height: 36px;
+  line-height: 45px;
 }
 
 .room img {
@@ -201,17 +201,12 @@ picture{
 }
 
 
-.notice{
-  font-style: italic;
-  font-size:14px;
-}
-
 .selectroombtn{
     width:140px;
     padding: 5px 10px;
     height:40px;
     font-size: 15px;
-    background-color: var(--primary-compl-color);
+    background-color: var(--secondary-compl-color);
     border: 2px solid var(--tertiary-color);
     color: var(--tertiary-color);
     font-family: var(--secondary-font-family-sbold);
@@ -220,9 +215,9 @@ picture{
 }
 
 .selectroombtn:hover{
-    background-color: var(--primary-color);
-    color:var(--tertiary-color);
-    border: 2px solid var(--primary-compl-color);
+    background-color: var(--primary-compl-color);
+    color:black;
+    border: 2px solid var(--tertiary-color);
 }
 
 /* desktop */
@@ -434,7 +429,7 @@ form.subscribe .btn {
 <body>
   <div class="wrapper">
             <div id="topbar-container">
-            <img id="comp-logo" src="../../static/icon.svg">
+            <a id="comp-logo-a-wrapper" href="./homepage.html"><img id="comp-logo" src="../../static/icon.svg"></a>
             <div id="topbar-right-container">
                 <button id="topbar-member-login-btn" type="button">
                     <img src="../../static/account_icon.svg">
@@ -485,7 +480,7 @@ form.subscribe .btn {
                     <button type="button">OTHERS</button>
                     <div class="navigation-section-element">
                         <a href="./promotions.html">PROMOTIONS</a>
-                        <a href="./contact_us.html">CONTACT</a>
+                        <a href="./contact_us.html">CONTACT US</a>
                     </div>
                 </div>
             </div>
@@ -506,6 +501,7 @@ form.subscribe .btn {
 
 <br>
 <br>
+<br>
 
 <!-- Availability -->
 <div id="availability">
@@ -517,33 +513,30 @@ form.subscribe .btn {
       </picture>
       <!-- used a link for clarity of the image -->
       <div class="room-information">
-        <div class="title">The Dusk Suite</div>
+        <div class="title">Dusk Suite</div>
         <hr>
         <div class="details">
           <div class="room-details">
-            <p>Size: 72 SQ M | 776 SQ FT</p>
-            <p>View: City, Marina Bay, Panoramic</p>
+            <p>80 m² / 861 ft² <span style="color: #bd9526;" >|</span> 2 Guests <span style="color:#bd9526;">|</span> City View</p>
+            <br>
             <ul>
-              <li>Maximum Pax: 3</li>
-              <li>Marble Bathroom</li>
-              <li>42' Interactive Flat Screen</li>
-              <li>Complimentary High-speed WIFI</li>
-              <li>Separate Living Room and Bedroom</li>
+              <li>Maximum Pax: 2</li>
+              <li>1 King size bed</li>
+              <li>40' inch PRISM+ TV</li>
+              <li>Unlimited wireless internet access</li>
+              <li>Coffee and tea making facilities</li>
             </ul>
           </div>
           <hr>
           <div class="price-ratings">
             <div class="price">
               <p>From:</p>
-              <p><span>$790.98</span>/night</p>
+              <p><span>$890.90</span>/night</p>
               <p>Includes taxes & fees</p>
-            </div>
-            <div class="notices">
-              <p class="notice">Rate and Availability <br> are subject to changes.</p>
             </div>
           </div>
         </div>
-        <a href="roompayments.html">
+        <a href="room_payments.html">
           <input type="submit" value="SELECT ROOM" class="selectroombtn">
         </a>
       </div>
@@ -553,73 +546,29 @@ form.subscribe .btn {
 
     <div class="room">
       <picture>
-        <source media="(min-width:650px)" srcset="../../static/rooms/deluxbedroom.png" >
-        <img src="../../static/rooms/deluxbedroom.png" alt="premiersuite" class="rooms">
-      </picture>
-      <div class="room-information">
-        <div class="title">Deluxe Suite</div>
-        <hr>
-        <div class="details">
-          <div class="room-details">
-            <p>Size: 73 SQ M | 785 SQ FT</p>
-            <p>View: City, Marina Bay, Panoramic</p>
-            <ul>
-              <li>Maximum Pax: 3</li>
-              <li>Marble Bathroom</li>
-              <li>48' Interactive Flat Screen</li>
-              <li>Complimentary High-speed WIFI</li>
-              <li>Separate Living Room and Bedroom</li>
-            </ul>
-          </div>
-          <hr>
-          <div class="price-ratings">
-            <div class="price">
-              <p>From:</p>
-              <p><span>$795.98</span>/night</p>
-              <p>Includes taxes & fees</p>
-            </div>
-            <div class="notices">
-              <p class="notice">Rate and Availability <br> are subject to changes.</p>
-            </div>
-          </div>
-        </div>
-        <a href="./room_payments.html">
-          <input type="submit" value="SELECT ROOM" class="selectroombtn">
-        </a>
-      </div>
-    </div>
-
-      <br>
-
-    <div class="room">
-      <picture>
-        <source media="(min-width:650px)" srcset="../../static/rooms/barbedroom.png" >
         <img src="../../static/rooms/barbedroom.png" alt="premiersuite" class="rooms">
       </picture>
       <div class="room-information">
-        <div class="title">The Dusk Bar Suite</div>
+        <div class="title">Bar Suite</div>
         <hr>
         <div class="details">
           <div class="room-details">
-            <p>Size: 219 SQ M | 2358 SQ FT</p>
-            <p>View: City, Marina Bay, Panoramic</p>
+            <p>75 m² / 807 ft² <span style="color: #bd9526;" >|</span> 3 Guests <span style="color:#bd9526;">|</span> City View</p>
+            <br>
             <ul>
-              <li>Maximum Pax: 6</li>
-              <li>Luxurious Marble Bathroom</li>
-              <li>65' Interactive Flat Screen</li>
-              <li>Complimentary High-speed WIFI</li>
-              <li>Combined Living Room and Bedroom</li>
+              <li>Maximum Pax: 3</li>
+              <li>1 King size bed</li>
+              <li>40'inch PRISM+ TV </li>
+              <li>Minibar snacks</li>
+              <li>Unlimited wireless internet access</li>
             </ul>
           </div>
           <hr>
           <div class="price-ratings">
             <div class="price">
               <p>From:</p>
-              <p><span>$980.55</span>/night</p>
+              <p><span>$790.90</span>/night</p>
               <p>Includes taxes & fees</p>
-            </div>
-            <div class="notices">
-              <p class="notice">Rate and Availability <br> are subject to changes.</p>
             </div>
           </div>
         </div>
@@ -633,73 +582,29 @@ form.subscribe .btn {
 
     <div class="room">
       <picture>
-        <source media="(min-width:650px)" srcset="../../static/rooms/naturebedroom.png" >
-        <img src="../../static/rooms/naturebedroom.png" alt="premiersuite" class="familyroom">
-      </picture>
-      <div class="room-information">
-        <div class="title">Nature Room</div>
-        <hr>
-        <div class="details">
-          <div class="room-details">
-            <p>Size: 90 SQ M | 968 SQ FT</p>
-            <p>View: City, Marina Bay, Panoramic</p>
-            <ul>
-              <li>Maximum Pax: 5</li>
-              <li>Marble Bathroom</li>
-              <li>38' Interactive Flat Screen</li>
-              <li>Complimentary High-speed WIFI</li>
-              <li>Entertainment Room with Sound System</li>
-            </ul>
-          </div>
-          <hr>
-          <div class="price-ratings">
-            <div class="price">
-              <p>From:</p>
-              <p><span>$879.65</span>/night</p>
-              <p>Includes taxes & fees</p>
-            </div>
-            <div class="notices">
-              <p class="notice">Rate and Availability <br> are subject to changes.</p>
-            </div>
-          </div>
-        </div>
-        <a href="./room_payments.html">
-          <input type="submit" value="SELECT ROOM" class="selectroombtn">
-        </a>
-      </div>
-    </div>
-
-      <br>
-
-    <div class="room">
-      <picture>
-        <source media="(min-width:650px)" srcset="../../static/rooms/roofbedroom.png" >
         <img src="../../static/rooms/roofbedroom.png" alt="premiersuite" class="rooms">
       </picture>
       <div class="room-information">
-        <div class="title">Rooftop Room</div>
+        <div class="title">Rooftop Garden Suite</div>
         <hr>
         <div class="details">
           <div class="room-details">
-            <p>Size: 72 SQ M | 776 SQ FT</p>
-            <p>View: City, Marina Bay, Panoramic</p>
+            <p>70 m² / 753 ft² <span style="color: #bd9526;" >|</span> 4 Guests <span style="color:#bd9526;">|</span> Skyline View</p>
+            <br>
             <ul>
-              <li>Maximum Pax: 3</li>
-              <li>Spacious Bathroom</li>
-              <li>38' Interactive Flat Screen</li>
-              <li>Complimentary High-speed WIFI</li>
-              <li>Gourmet Tea Selections</li>
+              <li>Maximum Pax: 4</li>
+              <li>2 King size beds</li>
+              <li>40' inch PRISM+ TV</li>
+              <li>2 work desk with 24' inch iMac</li>
+              <li>Unlimited wireless internet access</li>
             </ul>
           </div>
           <hr>
           <div class="price-ratings">
             <div class="price">
               <p>From:</p>
-              <p><span>$1098.76</span>/night</p>
+              <p><span>$690.90</span>/night</p>
               <p>Includes taxes & fees</p>
-            </div>
-            <div class="notices">
-              <p class="notice">Rate and Availability <br> are subject to changes.</p>
             </div>
           </div>
         </div>
@@ -713,7 +618,78 @@ form.subscribe .btn {
 
     <div class="room">
       <picture>
-        <source media="(min-width:650px)" srcset="../../static/rooms/classicbedroom.png" >
+        <img src="../../static/rooms/deluxbedroom.png" alt="premiersuite" class="familyroom">
+      </picture>
+      <div class="room-information">
+        <div class="title">Deluxe Room</div>
+        <hr>
+        <div class="details">
+          <div class="room-details">
+            <p>60 m² / 645ft² <span style="color: #bd9526;" >|</span> 3 Guests <span style="color:#bd9526;">|</span> City View</p>
+            <br>
+            <ul>
+              <li>Maximum Pax: 3</li>
+              <li>1 King Size Bed</li>
+              <li>40' inch PRISM+ TV </li>
+              <li>Coffee and tea making facilities</li>
+              <li>Unlimited wireless internet access</li>
+            </ul>
+          </div>
+          <hr>
+          <div class="price-ratings">
+            <div class="price">
+              <p>From:</p>
+              <p><span>$590.90</span>/night</p>
+              <p>Includes taxes & fees</p>
+            </div>
+          </div>
+        </div>
+        <a href="./room_payments.html">
+          <input type="submit" value="SELECT ROOM" class="selectroombtn">
+        </a>
+      </div>
+    </div>
+
+      <br>
+
+    <div class="room">
+      <picture>
+        <img src="../../static/rooms/naturebedroom.png" alt="premiersuite" class="rooms">
+      </picture>
+      <div class="room-information">
+        <div class="title">Serenity Room</div>
+        <hr>
+        <div class="details">
+          <div class="room-details">
+            <p>50 m² / 538ft² <span style="color: #bd9526;" >|</span> 4 Guests <span style="color:#bd9526;">|</span> Nature View</p>
+            <br>
+            <ul>
+              <li>Maximum Pax: 4</li>
+              <li>2 Queen size beds</li>
+              <li>40' inch PRISM+ TV </li>
+              <li>Minibar snacks</li>
+              <li>Unlimited wireless internet access</li>
+            </ul>
+          </div>
+          <hr>
+          <div class="price-ratings">
+            <div class="price">
+              <p>From:</p>
+              <p><span>$490.90</span>/night</p>
+              <p>Includes taxes & fees</p>
+            </div>
+          </div>
+        </div>
+        <a href="./room_payments.html">
+          <input type="submit" value="SELECT ROOM" class="selectroombtn">
+        </a>
+      </div>
+    </div>
+
+      <br>
+
+    <div class="room">
+      <picture>
         <img src="../../static/rooms/classicbedroom.png" alt="premiersuite" class="rooms">
       </picture>
       <div class="room-information">
@@ -721,25 +697,23 @@ form.subscribe .btn {
         <hr>
         <div class="details">
           <div class="room-details">
-            <p>Size: 78 SQ M | 839 SQ FT</p>
-            <p>View: City, Marina Bay, Panoramic</p>
+            <p>40 m² / 430ft² <span style="color: #bd9526;" >|</span> 3 Guests <span style="color:#bd9526;">|</span> Skyline View</p>
+            <br>
             <ul>
               <li>Maximum Pax: 3</li>
-              <li>Marble Bathroom</li>
-              <li>32' Interactive Flat Screen</li>
-              <li>Complimentary High-speed WIFI</li>
-              <li>Complimentary Breakfast</li>
+              <li>1 King Size Bed</li>
+              <li>40' inch PRISM+ TV </li>
+              <li>Coffee and tea making facilities</li>
+              <li>Unlimited wireless internet access </li>
+              
             </ul>
           </div>
           <hr>
           <div class="price-ratings">
             <div class="price">
               <p>From:</p>
-              <p><span>$568.76</span>/night</p>
+              <p><span>$390.90</span>/night</p>
               <p>Includes taxes & fees</p>
-            </div>
-            <div class="notices">
-              <p class="notice">Rate and Availability <br> are subject to changes.</p>
             </div>
           </div>
         </div>
@@ -787,16 +761,6 @@ form.subscribe .btn {
                 </div>
             </div>
         </div>
-      <!-- Subscribe -->
-      <div id="subscribe">
-        <div class="subscribe_container">
-          <h2>Subscribe Now</h2>
-          <p>Subscribe to our newsletter to receive latest promotions/updates</p>
-          <form action="" class="subscribe">
-            <input type="email" name="email" id="email" placeholder="Enter Email Address">
-            <button type="submit" class="btn">Subscribe</button>
-        </div>
-      </div>
 
 </body>
 </html>

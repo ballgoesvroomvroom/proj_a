@@ -186,8 +186,8 @@ body {
 
 /* On hover, add a grey background color */
 #calendar .prev:hover, #calendar .next:hover {
-  background-color: var(--primary-color);
-  color: var(--tertiary-color);
+  background-color: #f1f1f1;
+  color: #bd9526;
 }
 
 #calendar h2 {
@@ -212,7 +212,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-compl-color);
   height:450px;
 }
 
@@ -458,7 +458,7 @@ form.subscribe .btn {
   </script>
 <div class="wrapper">
 <div id="topbar-container">
-            <img id="comp-logo" src="../../static/icon.svg">
+            <a id="comp-logo-a-wrapper" href="./homepage.html"><img id="comp-logo" src="../../static/icon.svg"></a>
             <div id="topbar-right-container">
                 <button id="topbar-member-login-btn" type="button">
                     <img src="../../static/account_icon.svg">
@@ -509,7 +509,7 @@ form.subscribe .btn {
                     <button type="button">OTHERS</button>
                     <div class="navigation-section-element">
                         <a href="./promotions.html">PROMOTIONS</a>
-                        <a href="./contact_us.html">CONTACT</a>
+                        <a href="./contact_us.html">CONTACT US</a>
                     </div>
                 </div>
             </div>
@@ -545,23 +545,24 @@ form.subscribe .btn {
       <div class="slideshow-container">
 
         <div class="mySlides1">
-          <img src="https://static.thehoneycombers.com/wp-content/uploads/sites/2/2016/10/The-Ritz-Carlton-Premier-Suite.jpg" style="width:100%; height:450px;">
+          <img src="https://s7d2.scene7.com/is/image/ritzcarlton/rc_chicago_lobby_v1a?$LargeViewport100pct$" style="width:100%; height:450px;">
         </div>
         <div class="mySlides1">
           <img src="https://s7d2.scene7.com/is/image/ritzcarlton/RCCHICA_00400?$LargeViewport100pct$" style="width:100%; height:450px;">
         </div>
         <div class="mySlides1">
-          <img src="https://s7d2.scene7.com/is/image/ritzcarlton/rc_chicago_lobby_v1a?$LargeViewport100pct$" style="width:100%; height:450px;">
+          <img src="https://media.architecturaldigest.com/photos/5c6452972a81d22dc23c83f9/16:9/w_2991,h_1682,c_limit/Midnight%20Rambler-TX.jpg" style="width:100%; height:450px;">
         </div>
         <div class="mySlides1">
           <img src="https://media.architecturaldigest.com/photos/5c6452972a81d22dc23c83f9/16:9/w_2991,h_1682,c_limit/Midnight%20Rambler-TX.jpg" style="width:100%; height:450px;">
         </div>
         <div class="mySlides1">
-          <img src="https://www.marinabaysands.com/content/dam/singapore/marinabaysands/master/main/home/hotel/rooms-suites/grand-club-room/grand-club-room-3_1920x960.jpg" style="width:100%; height:450px;">
+          <img src="../../static/rooms/dusksliving.png" style="width:100%; height:450px;">
         </div>
         <div class="mySlides1">
-          <img src="https://s7d2.scene7.com/is/image/ritzcarlton/sinrz-king-50644471?$LargeViewport100pct$" style="width:100%; height:450px;">
+          <img src="../../static/rooms/duskbathroom.png" style="width:100%; height:450px;">
         </div>
+        
         <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
         <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
 
@@ -635,16 +636,6 @@ form.subscribe .btn {
                 </div>
             </div>
         </div>
-    <!-- Subscribe -->
-    <div id="subscribe">
-      <div class="subscribe_container">
-        <h2>Subscribe Now</h2>
-        <p>Subscribe to our newsletter to receive latest promotions/updates</p>
-        <form action="" class="subscribe">
-          <input type="email" name="email" id="email" placeholder="Enter Email Address">
-          <button type="submit" class="btn">Subscribe</button>
-      </div>
-    </div> 
 
   <script>
     // need help making sure that users cannot check in on previous dates

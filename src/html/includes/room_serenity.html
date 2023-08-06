@@ -10,10 +10,16 @@
 		<link rel="stylesheet" href="../../css/includes/footer.css">
 		<link rel="stylesheet" href="../../css/includes/tags.css">
 		<link rel="stylesheet" href="../../css/includes/room_viewing.css">
+
+		<style>
+			#header-viewport-container {
+				background-image: url("../../static/rooms/naturebedroom.png");
+			}
+		</style>
 	</head>
 	<body>
 		<div id="topbar-container">
-			<img id="comp-logo" src="../../static/icon.svg">
+			<a id="comp-logo-a-wrapper" href="../views/homepage.html"><img id="comp-logo" src="../../static/icon.svg"></a>
 			<div id="topbar-right-container">
 				<button id="topbar-member-login-btn" type="button">
 					<img src="../../static/account_icon.svg">
@@ -64,7 +70,7 @@
 					<button type="button">OTHERS</button>
 					<div class="navigation-section-element">
 						<a href="../views/promotions.html">PROMOTIONS</a>
-						<a href="../views/contact_us.html">CONTACT</a>
+						<a href="../views/contact_us.html">CONTACT US</a>
 					</div>
 				</div>
 			</div>

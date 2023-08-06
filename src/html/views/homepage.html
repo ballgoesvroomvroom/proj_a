@@ -202,8 +202,8 @@ body {
 					margin-right: 0%;
 				}
 						img.mailus {
-							width: 50px;
-							height: 50px;
+							width: 32px;
+							height: 32px;
 							vertical-align: middle;
 						}
 						img.mailus:hover {
@@ -220,8 +220,8 @@ body {
 							text-decoration: underline;
 						}
 						img.callus {
-							width: 50px;
-							height: 50px;
+							width: 32px;
+							height: 32px;
 							vertical-align: middle;
 						}
 						img.callus:hover{
@@ -660,7 +660,7 @@ color: #FFFFFF;
 	</head>
 	<body>
 		<div id="topbar-container">
-			<img id="comp-logo" src="../../static/icon.svg">
+			<a id="comp-logo-a-wrapper" href="./homepage.html"><img id="comp-logo" src="../../static/icon.svg"></a>
 			<div id="topbar-right-container">
 				<button id="topbar-member-login-btn" type="button">
 					<img src="../../static/account_icon.svg">
@@ -711,7 +711,7 @@ color: #FFFFFF;
 					<button type="button">OTHERS</button>
 					<div class="navigation-section-element">
 						<a href="./promotions.html">PROMOTIONS</a>
-						<a href="./contact_us.html">CONTACT</a>
+						<a href="./contact_us.html">CONTACT US</a>
 					</div>
 				</div>
 			</div>
@@ -739,11 +739,11 @@ color: #FFFFFF;
 			<div class="details">  
 			<img src="../../static/icon.svg" alt="The Dusk Hotel" id="icon2">
 				<br>  
-			<a href="mailto: grapcubes@gmail.com"><img src="../../static/homepage/mail.svg" alt="Mail Us" class="mailus"></a>
-			<a href="mailto: grapcubes@gmail.com" class="beside1">reservation.sg@thedusk.com</a>
+			<a href="mailto: grapcubes@gmail.com"><img src="../../static/mail_icon.svg" alt="Mail Us" class="mailus"></a>
+			<a href="mailto: grapcubes@gmail.com" class="beside1">reservation@thedusk.com</a>
 			<br>
-			<a href="tel:+6592224896"><img src="../../static/homepage/phone.svg" alt="Call Us" class="callus"></a>
-			<a href="tel:+6592224896" class="beside2">+65 8877 7755</a>
+			<a href="tel:+6592224896"><img src="../../static/phone_icon.svg" alt="Call Us" class="callus"></a>
+			<a href="tel:+6592224896" class="beside2">+65 6798 8789</a>
 		</div>
 	</div>
 	<div id="infos" data-scroll-speed="1" data-scroll="1">
@@ -872,18 +872,6 @@ color: #FFFFFF;
 			</div>
 		</div>
 	</div>
-</div>
-	<!-- Subscribe -->
-	  <div id="subscribe">
-		<div class="subscribe_container">
-		  <h2>Subscribe Now</h2>
-		  <p>Subscribe to our newsletter to receive latest promotions/updates</p>
-		  <form action="" class="subscribe">
-			<input type="email" name="email" id="email" placeholder="Enter Email Address">
-			<button type="submit" class="btn">Subscribe</button>
-		</div>
-	  </div> 
-
 </div>
 <script>
   gsap.registerPlugin(ScrollTrigger);
