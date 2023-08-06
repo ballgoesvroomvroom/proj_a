@@ -455,7 +455,7 @@
 					tabButton: document.getElementById("details-tab-container").getElementsByTagName("button")[0],
 					tabNextArrow: document.getElementById("details-tab-container").getElementsByClassName("progress-tab-next-arrow")[0],
 
-					nextPageBtn: document.getElementById("details-page-container").getElementsByClassName("page-header-next-navigbtn")[0]
+					nextPageBtns: document.getElementById("details-page-container").getElementsByClassName("page-header-next-navigbtn")
 				},
 				"guests": {
 					tabContainer: document.getElementById("guests-tab-container"),
@@ -464,7 +464,7 @@
 					tabButton: document.getElementById("guests-tab-container").getElementsByTagName("button")[0],
 					tabNextArrow: document.getElementById("guests-tab-container").getElementsByClassName("progress-tab-next-arrow")[0],
 
-					nextPageBtn: document.getElementById("guests-page-container").getElementsByClassName("page-header-next-navigbtn")[0]
+					nextPageBtns: document.getElementById("guests-page-container").getElementsByClassName("page-header-next-navigbtn")
 				},
 				"payment": {
 					tabContainer: document.getElementById("payment-tab-container"),
@@ -1180,48 +1180,52 @@
 				return true
 			})
 
-			// register pages next button
-			pages.pageElements.details.nextPageBtn.addEventListener("click", e => {
-				// verify date and time filled in
-				if (this.date.length > 0 && this.time.length > 0) {
-					// move on with next page
-					if (pages.highestPage === 0) {
-						pages.nextPage()
-					} else {
-						// switch to next page
-						pages.switchPage(1)
+			// register pages next buttons (two buttons, one top and one bottom)
+			for (let nextBtn of pages.pageElements.details.nextPageBtns) {
+				nextBtn.addEventListener("click", e => {
+					// verify date and time filled in
+					if (this.date.length > 0 && this.time.length > 0) {
+						// move on with next page
+						if (pages.highestPage === 0) {
+							pages.nextPage()
+						} else {
+							// switch to next page
+							pages.switchPage(1)
+						}
 					}
-				}
-			})
+				})
+			}
 
-			// register guests next page
-			pages.pageElements.guests.nextPageBtn.addEventListener("click", e => {
-				// verify contact email is valid
-				var success = this.validateContactEmail(); // will set this.contactEmailAddr too
-				if (!success) {
-					utils.popup(false, "Invalid contact email address")
-					return
-				}
-
-				// verify main guest details are all populated
-				var [valid, guestDetails] = this.fetchGuestDetails()
-				if (valid) {
-					this.firstName = guestDetails.firstName;
-					this.lastName = guestDetails.lastName;
-					this.dietaryRequirements = guestDetails.specialReq
-
-					// repopulate DOM with correct fields
-					this.repopulateDetails();
-
-					// move to next page
-					if (pages.highestPage === 1) {
-						pages.nextPage()
-					} else {
-						// switch to next page
-						pages.switchPage(2)
+			// register guests next page (trigger from nextPage buttons (two buttons, one top and one bottom))
+			for (let nextBtn of pages.pageElements.guests.nextPageBtns) {
+				nextBtn.addEventListener("click", e => {
+					// verify contact email is valid
+					var success = this.validateContactEmail(); // will set this.contactEmailAddr too
+					if (!success) {
+						utils.popup(false, "Invalid contact email address")
+						return
 					}
-				}
-			})
+
+					// verify main guest details are all populated
+					var [valid, guestDetails] = this.fetchGuestDetails()
+					if (valid) {
+						this.firstName = guestDetails.firstName;
+						this.lastName = guestDetails.lastName;
+						this.dietaryRequirements = guestDetails.specialReq
+
+						// repopulate DOM with correct fields
+						this.repopulateDetails();
+
+						// move to next page
+						if (pages.highestPage === 1) {
+							pages.nextPage()
+						} else {
+							// switch to next page
+							pages.switchPage(2)
+						}
+					}
+				})
+			}
 		}
 
 		const emailNameMatch = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+$/
